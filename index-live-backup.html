@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+  <title>AMS Dashboard</title>
+  <!-- <base href="/" /> -->
+  
+  <link rel="stylesheet" href="custom-styles.css">
+  <!-- <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> -->
+
+  <!-- <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script> -->
+
+
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+  <!-- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script> -->
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/1.0.25/angular-ui-router.min.js"></script>
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/1.0.25/angular-ui-router.js"></script> -->
+  <!-- <script src="http://unpkg.com/@uirouter/angularjs/release/angular-ui-router.min.js"></script> -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+	<script src="app_prod.js"></script>
+
+  <!-- <link href="css/simple-sidebar.css" rel="stylesheet"> -->
+   <link rel="icon" type="icons/x-icon" href="icons/favicon.ico" />
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" crossorigin="anonymous"></script>
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic" rel="stylesheet" type="text/css" />
+        <!-- Third party plugin CSS-->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css" rel="stylesheet" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="css/styles.css" rel="stylesheet" />
+  <!-- Custom fonts for this template-->
+  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+  <!-- Custom styles for this template-->
+  <!-- <link href="css/sb-admin-2.min.css" rel="stylesheet"> -->
+  
+  <!-- Core plugin JavaScript-->
+  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+  <!-- Custom scripts for all pages-->
+  <script src="js/sb-admin-2.min.js"></script>
+
+
+</head>
+<body ng-app="AMSApp">
+<!-- <body ng-app="AMSApp" style="background: gray;"> -->
+<div >
+<!-- <div class="container" style="background: white;"> -->
+<!-- <div class="header">
+  <a href="#default" class="logo">KINGFISHER</a> -->
+  <!-- <div class="header-right">
+    <a class="active" sref="/configuration">Configuration</a>
+    <a href="#contact">Logout</a>
+    
+  </div> 
+</div>-->
+<!-- Topbar -->
+        <nav class="navbar navbar-expand navbar-light bg-saffron topbar mb-4 static-top shadow" ng-if="welcomeScr">
+
+          <!-- Sidebar Toggle (Topbar) -->
+          <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+            <i class="fa fa-bars"></i>
+          </button>
+		<a class="navbar-brand js-scroll-trigger d-flex align-items-center justify-content-center" href="dashboard.html">
+            <div class="input-group text-gray-900">
+             <h5><b>KINGFISHER TCS ONE PLACE</b></h5>
+            </div>
+		</a>
+		
+          <!-- Topbar Navbar -->
+          <ul class="navbar-nav ml-auto" ng-if="loginSuccess">
+
+          
+
+            <div class="topbar-divider d-none d-sm-block"></div>
+
+            <!-- Nav Item - User Information -->
+            <li class="nav-item dropdown no-arrow">
+              <a class="nav-link dropdown-toggle" href="" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span class="mr-2 d-none d-lg-inline text-gray-900 large animated--grow-in"><b>{{currentUser.username}}</b></span>
+                <!-- <img class="img-profile rounded-circle" src="C:\Users\SONY\Desktop\Projects\AMS ONE PLACE\img\joy.jpeg"> -->
+              </a>
+              <!-- Dropdown - User Information -->
+              <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                <a class="dropdown-item" href="#!/home" >
+                  <i class="fas fa-home fa-sm fa-fw mr-2 text-gray-400"></i>
+                  Back to Home
+                </a>
+               <a class="dropdown-item" href="#!/configuration" ng-if="adminLogin">
+                  <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+                  Configuration
+                </a>
+                <!--a class="dropdown-item" href="#">
+                  <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
+                  Activity Log
+                </a> -->
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#!/login" data-toggle="modal" data-target="#logoutModal" >
+                  <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                  Logout
+                </a>
+              </div>
+            </li>
+
+          </ul>
+
+        </nav>
+        <!-- End of Topbar -->
+ <div ui-view align=center></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,109 @@
+<div>
+<!-- <div style="margin-right: 2%;" align=right>
+<a class="btn btn-primary btn-xl js-scroll-trigger" ng-click="moveToDashboard()" href="">&nbsp;&nbsp;Back to Home&nbsp;&nbsp;</a>  
+<a class="btn btn-primary btn-xl js-scroll-trigger" ng-click="logout()" href="">&nbsp;&nbsp;Logout&nbsp;&nbsp;</a>  
+<!-- <button type="submit" class="btn btn-primary" ng-click="moveToDashboard()" >Back to Home</button>
+<button type="submit" class="btn btn-primary" ng-click="logout()">logout</button> 
+</div> -->
+<div align=left>
+<a class="btn btn-primary btn-xl js-scroll-trigger" ng-click="editConfig('new')" href="">&nbsp;&nbsp;&#9998; Create New config&nbsp;</a>
+</div>
+<br>
+<h3 id="topSection">Current Configurations</h3>
+
+<div class="table-responsive col-lg-12">
+<table class="table table-hover table-striped table-bordered table-primary content-table ">
+   <thead class="thead-dark content-table-header" >
+    
+    <th>Application</th>
+    <th>Module Name</th>
+    <th>Topic</th>
+    <th>Topic Link</th>
+    <th>Roles</th>
+	<th>Edit</th>
+  </thead>
+  <tbody >
+  <tr ng-repeat="config in configs">
+    
+    <td>{{ config.appName }}</td>
+    <td>{{ config.modName }}</td>
+    <td>{{ config.topicName }}</td>
+    <td>{{ config.topicUrl }}</td>
+    <td>
+		
+		<div ng-repeat="role in config.topicRoles">{{role.name}}</div>
+	</td>
+	<td>
+      <!-- <button class="btn btn-primary" ng-click="editConfig($index)">&#9998; Edit</button> -->
+	  <a class="btn btn-primary btn-x1 js-scroll-trigger" ng-click="editConfig($index)" href="">&nbsp;&nbsp;Edit&nbsp;&nbsp;</a> 
+    </td>
+
+  </tr>
+  </tbody>
+
+</table>
+</div>
+<br>
+<!-- <button class="btn btn-primary" ng-click="editConfig('new')">&#9998; Create New config</button> -->
+
+<div ng-if="!hideform" class=""  id="bottomSection" align=center>
+
+	<form class="form-group form-container"  >
+	<br>
+	  <h3 ng-show="edit">{{editFormHeader}}:</h3>
+	  <div class="form-group">
+		<label>Application</label>
+		<!-- <input class="w3-input w3-border" type="text" ng-model="config.application"> -->
+		<select class="form-control" style="width:200px;" ng-model="config.appName" >
+		<option ng-repeat="appNames in configs | unique:'appName'">{{appNames.appName}}</option>
+		</select> 
+		</div><br />
+<!-- 		<div class="dropdown">
+			<button type="button" class="btn btn-primary dropdown-toggle" >
+			Dropdown button
+		  </button>
+		  <div class="dropdown-menu">
+			<a class="dropdown-item" ng-model="config.application" ng-repeat="apps in allApplications" href="#">{{apps.appName}}</a>
+			
+		  </div>
+		</div> -->
+	  <br>
+	  
+	   <div class="form-group">
+		<label>Module</label>
+		<select class="form-control" style="width:300px;" ng-model="config.modName" >
+		<option ng-repeat="modNames in configs | unique:'modName'">{{modNames.modName}}</option>
+		</select>
+		</div>
+		<!-- <input class="form-control" style="width:200px;" type="text" ng-model="config.modName"> -->
+		
+	  <br> 
+	   <div class="form-group">
+		<label>Topic Name</label> <input class="form-control" style="width:200px;" type="text" ng-model="config.topicName">
+		</div>
+		
+		
+	  <br>
+	   <div class="form-group">
+		<label>Topic URL</label>
+		
+		<input class="form-control" style="width:300px;" type="text" ng-model="config.topicUrl">
+		</div>
+
+	  <br>
+	  <div class="form-group">
+	  <label>Roles</label><br />
+	  <!-- <input class="form-control" style="width:200px;" type="text" ng-model="config.topicRoles"> -->
+	  <select class="form-control" style="width:300px;" ng-model="config.topicRoles" multiple>
+		<option ng-repeat="topicRole in rolesList">{{topicRole.roleName}}</option>
+	  </select>
+	  </div>
+
+	  <br />
+	  <a class="btn btn-primary btn-xl js-scroll-trigger" ng-click="saveOrUpdateData()" href="">&nbsp;&nbsp;&#10004; {{buttonName}}&nbsp;&nbsp;</a>
+	  <a class="btn btn-primary btn-xl js-scroll-trigger" ng-click="resetForm()" href="">&nbsp;&nbsp;Cancel&nbsp;&nbsp;</a>
+	  <!-- <button class="btn btn-primary"  ng-click="saveOrUpdateData()" >&#10004; {{buttonName}}</button> -->
+	</form>
+</div>
+
+</div>

@@ -1,0 +1,25 @@
+	<div align=center>
+		<div class="form-container" style="text-align:center;" >
+		<!-- <div  style="text-align:center;" > -->
+			<div style="margin:8%;">
+			  <h1 >Login</h1>
+			  <br />
+			  <form >
+				<div class="form-group" align=center>
+					<input type="text" class="form-control" style="width:300px; align:center;" ng-model="creds.username" placeholder="username" required=""/>
+				</div>
+
+				<div class="form-group" align=center> 
+					<input type="password" class="form-control" style="width:300px; align:center;" ng-model="creds.password" placeholder="password" required=""/>
+				</div>
+
+				<a class="btn btn-primary btn-xl js-scroll-trigger" ng-click="formSubmit()" href="">&nbsp;&nbsp;Let me in&nbsp;&nbsp;</a>  
+				<!-- <button type="submit" class="btn btn-primary" >Let me in</button> -->
+				<br><span class="text-danger" style="color:red" ng-if="loginFailed">Invalid Username/Password</span>
+
+			  </form>
+			  
+			</div>
+		</div>
+	</div>
+	.

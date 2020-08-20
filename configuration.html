@@ -1,0 +1,321 @@
+<div>
+<!-- <div style="margin-right: 2%;" align=right>
+<a class="btn btn-primary btn-xl js-scroll-trigger" ng-click="moveToDashboard()" href="">&nbsp;&nbsp;Back to Home&nbsp;&nbsp;</a>  
+<a class="btn btn-primary btn-xl js-scroll-trigger" ng-click="logout()" href="">&nbsp;&nbsp;Logout&nbsp;&nbsp;</a>  
+<!-- <button type="submit" class="btn btn-primary" ng-click="moveToDashboard()" >Back to Home</button>
+<button type="submit" class="btn btn-primary" ng-click="logout()">logout</button> 
+</div> -->
+
+<br>
+<h3 id="topSection">Current Configurations</h3>
+
+
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+  <li class="nav-item">
+    <a class="nav-link active" id="application-tab" data-toggle="tab" ng-click="selectedTab(1)" href="#application" role="tab" aria-controls="application" aria-selected="true" data-toggle="tab" onclick="return false;">Application</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="module-tab" data-toggle="tab" href="#module" ng-click="selectedTab(2)" role="tab" aria-controls="module" aria-selected="false" data-toggle="tab" onclick="return false;">Module</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="topic-tab" data-toggle="tab" href="#topic" ng-click="selectedTab(3)" role="tab" aria-controls="topic" aria-selected="false"data-toggle="tab" onclick="return false;">Topics</a>
+  </li>
+</ul>
+<div class="tab-content" id="myTabContent">
+  <div class="tab-pane fade show active" id="application" role="tabpanel" aria-labelledby="application-tab">
+  <div align=right>
+	<a class="btn btn-primary btn-xl js-scroll-trigger" ng-click="editApps('new')" href=""><big>&#43;</big> New</a>
+  </div>
+				  <div class="table-responsive col-lg-12">
+				<table class="table table-hover table-striped table-bordered table-primary content-table ">
+				   <thead class="thead-dark content-table-header" >
+					
+					<th>Application</th>
+					<th>Description</th>
+					<th>Application Link</th>
+					<th>Icon Link</th>
+					<th>Standalone</th>
+					<th>Edit</th>
+				  </thead>
+				  <tbody >
+				  <tr ng-repeat="apps in allConfigs">
+					
+					<td>{{ apps.name }}</td>
+					<td>{{ apps.description }}</td>
+					<td>{{ apps.application_url}}</td>
+					<td>{{ apps.image_url  }}</td>
+					<td>{{ apps.standalone }}</td>
+					<!-- <td> -->
+						
+						<!-- <div ng-repeat="role in config.topicRoles">{{role.name}}</div> -->
+					<!-- </td> -->
+					<td>
+					  <!-- <button class="btn btn-primary" ng-click="editConfig($index)">&#9998; Edit</button> -->
+					  <a class="btn btn-primary btn-x1 js-scroll-trigger" ng-click="editApps($index)" href="">&#9998;Edit</a>&nbsp;
+					  <a class="btn btn-primary btn-x1 js-scroll-trigger" ng-click="removeComponent('application',apps.id)" href="" data-target="#exampleModalCenter"><i class="fas fa-trash fa-sm fa-fw mr-2 text-gray-400"></i></a> 
+					</td>
+
+				  </tr>
+				  </tbody>
+
+				</table>
+				</div>
+	
+  </div>
+  
+  
+  <div class="tab-pane fade" id="module" role="tabpanel" aria-labelledby="module-tab">
+  <div align=right>
+	<a class="btn btn-primary btn-xl js-scroll-trigger" ng-click="editMod('new')" href=""><big>&#43;</big> New</a>
+  </div>
+				  <div class="table-responsive col-lg-12">
+				<table class="table table-hover table-striped table-bordered table-primary content-table ">
+				   <thead class="thead-dark content-table-header" >
+					
+					<th>Application</th>
+					<th>Module Name</th>
+					<th>Description</th>
+					<th>Edit</th>
+				  </thead>
+				  <tbody >
+				  <tr ng-repeat="config in allModuleConfigs">
+					
+					<td>{{ config.appName }}</td>
+					<td>{{ config.modName }}</td>
+					<td>{{ config.appDescription }}</td>
+					<!-- <td> -->
+						
+						<!-- <div ng-repeat="role in config.topicRoles">{{role.name}}</div> -->
+					<!-- </td> -->
+					<td>
+					  <!-- <button class="btn btn-primary" ng-click="editConfig($index)">&#9998; Edit</button> -->
+					  <a class="btn btn-primary btn-x1 js-scroll-trigger" ng-click="editMod($index)" href="">&nbsp;&nbsp;Edit&nbsp;&nbsp;</a> 
+					  <a class="btn btn-primary btn-x1 js-scroll-trigger" ng-click="removeComponent('module',config.modId)" href=""><i class="fas fa-trash fa-sm fa-fw mr-2 text-gray-400"></i></a> 
+					</td>
+
+				  </tr>
+				  </tbody>
+
+				</table>
+				</div>
+  
+  
+  </div>
+  
+  
+  <div class="tab-pane fade" id="topic" role="tabpanel" aria-labelledby="topic-tab">
+  <div align=right>
+	<a class="btn btn-primary btn-xl js-scroll-trigger" ng-click="editConfig('new')" href=""><big>&#43;</big> New</a>
+  </div>
+									<div class="table-responsive col-lg-12">
+							<table class="table table-hover table-striped table-bordered table-primary content-table ">
+							   <thead class="thead-dark content-table-header" >
+								
+								<th>Application</th>
+								<th>Module Name</th>
+								<th>Topic</th>
+								<th>Topic Link</th>
+								<th>Roles</th>
+								<th>Edit</th>
+							  </thead>
+							  <tbody >
+							  <tr ng-repeat="config in configs">
+								
+								<td>{{ config.appName }}</td>
+								<td>{{ config.modName }}</td>
+								<td>{{ config.topicName }}</td>
+								<td>{{ config.topicUrl }}</td>
+								<td>
+									
+									<div ng-repeat="role in config.topicRoles">{{role.name}}</div>
+								</td>
+								<td>
+								  <!-- <button class="btn btn-primary" ng-click="editConfig($index)">&#9998; Edit</button> -->
+								  <a class="btn btn-primary btn-x1 js-scroll-trigger" ng-click="editConfig($index)" href="">&nbsp;&nbsp;Edit&nbsp;&nbsp;</a> 
+								  <a class="btn btn-primary btn-x1 js-scroll-trigger" ng-click="removeComponent('topic',config.topicId)" href=""><i class="fas fa-trash fa-sm fa-fw mr-2 text-gray-400"></i></a> 
+								</td>
+
+							  </tr>
+							  </tbody>
+
+							</table>
+							</div>
+
+  </div>
+</div>
+
+
+<br>
+<!-- <button class="btn btn-primary" ng-click="editConfig('new')">&#9998; Create New config</button> -->
+
+<div ng-if="currentTab == '3'  && !hideform" class=""  id="bottomSection" align=center>
+
+	<form class="form-group form-container"  >
+	<br>
+	  <h3 ng-show="edit">{{editFormHeader}}:</h3>
+	  <div class="form-group">
+		<label>Application</label>
+		<!-- <input class="w3-input w3-border" type="text" ng-model="config.application"> -->
+		<select class="form-control" style="width:200px;" ng-model="config.appName" ng-change="getModulesOfSelectedApp(config.appName)" >
+		<option ng-repeat="apps in allConfigs track by apps.id">{{apps.name}}</option>
+		<!-- <select class="form-control" style="width:300px;" ng-options="apps as apps.name for apps in allConfigs track by apps.id" ng-model="config.appName" > -->
+		</select> 
+		</div><br />
+<!-- 		<div class="dropdown">
+			<button type="button" class="btn btn-primary dropdown-toggle" >
+			Dropdown button
+		  </button>
+		  <div class="dropdown-menu">
+			<a class="dropdown-item" ng-model="config.application" ng-repeat="apps in allApplications" href="#">{{apps.appName}}</a>
+			
+		  </div>
+		</div> -->
+	  <br>
+	  
+	   <div class="form-group">
+		<label>Module</label>
+		<select class="form-control" style="width:300px;" ng-model="config.modName" >
+		<!-- <select class="form-control" style="width:300px;" ng-options="apps as app.name for apps in allConfigs track by apps.id" ng-model="config.modName" > -->
+		<option ng-repeat="modNames in moduleNamesForApp">{{modNames.name}}</option>
+		<!-- <option ng-repeat="modNames in configs | unique:'modName'">{{modNames.modName}}</option> -->
+		</select>
+		</div>
+		<!-- <input class="form-control" style="width:200px;" type="text" ng-model="config.modName"> -->
+		
+	  <br> 
+	   <div class="form-group">
+		<label>Topic Name</label> <input class="form-control" style="width:200px;" type="text" ng-model="config.topicName">
+		</div>
+		
+		
+	  <br>
+	   <div class="form-group">
+		<label>Topic URL</label>
+		
+		<input class="form-control" style="width:300px;" type="text" ng-model="config.topicUrl">
+		</div>
+
+	  <br>
+	  <div class="form-group">
+	  <label>Roles</label><br />
+	  <!-- <input class="form-control" style="width:200px;" type="text" ng-model="config.topicRoles"> -->
+	  <select class="form-control" style="width:300px;" ng-model="config.topicRoles" ng-selected="config.topicRoles.name" multiple>
+		<option ng-repeat="topicRole in rolesList track by topicRole.id">{{topicRole.name}}</option>
+	  </select>
+	  </div>
+
+	  <br />
+	  <a class="btn btn-primary btn-xl js-scroll-trigger" ng-click="saveOrUpdateTopic()" href="">&nbsp;&nbsp;&#10004; {{buttonName}}&nbsp;&nbsp;</a>
+	  <a class="btn btn-primary btn-xl js-scroll-trigger" ng-click="resetForm()" href="">&nbsp;&nbsp;Cancel&nbsp;&nbsp;</a>
+	  <!-- <button class="btn btn-primary"  ng-click=")" >&#10004; {{buttonName}}</button> -->
+	</form>
+</div>
+
+<div ng-if="currentTab == '1' && !hideform" class=""  id="bottomSection" align=center>
+
+	<form class="form-group form-container"  >
+	<br>
+	  <h3 ng-show="edit">{{editFormHeader}}:</h3>
+	  <div class="form-group">
+		<label>Application </label>
+		<!-- <input class="w3-input w3-border" type="text" ng-model="config.application"> -->
+		<input class="form-control" style="width:200px;" type="text" ng-model="selectedApp.name"><br />
+<!-- 		<div class="dropdown">
+			<button type="button" class="btn btn-primary dropdown-toggle" >
+			Dropdown button
+		  </button>
+		  <div class="dropdown-menu">
+			<a class="dropdown-item" ng-model="config.application" ng-repeat="apps in allApplications" href="#">{{apps.appName}}</a>
+			
+		  </div>
+		</div> -->
+	  <br>
+	  
+	   <div class="form-group">
+		<label>Description </label>
+		<input class="form-control" style="width:300px;" type="text" ng-model="selectedApp.description">
+		</div>
+		<!-- <input class="form-control" style="width:200px;" type="text" ng-model="config.modName"> -->
+		
+	  <br> 
+	   <div class="form-group">
+		<label>Application URL </label> <input class="form-control" style="width:300px;" type="text" ng-model="selectedApp.application_url">
+		</div>
+		
+		
+	  <br>
+	   <div class="form-group">
+		<label>Application Image URL </label>
+		
+		<input class="form-control" style="width:300px;" type="text" ng-model="selectedApp.image_url">
+		</div>
+
+	  <br>
+	  <div class="form-check">
+	  <label>Is it Standalone ? </label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	  <input type="checkbox" class="form-check-input" ng-model="selectedApp.standalone"> 
+	  <!-- <input class="form-control" style="width:200px;" type="text" ng-model="config.topicRoles"> -->
+	  
+	  </div>
+
+	  <br />
+	  <a class="btn btn-primary btn-xl js-scroll-trigger" ng-click="saveOrUpdateApplication()" href="">&nbsp;&nbsp;&#10004; {{buttonName}}&nbsp;&nbsp;</a>
+	  <a class="btn btn-primary btn-xl js-scroll-trigger" ng-click="resetForm()" href="">&nbsp;&nbsp;Cancel&nbsp;&nbsp;</a>
+	  <!-- <button class="btn btn-primary"  ng-click="()" >&#10004; {{buttonName}}</button> -->
+	</form>
+</div>
+</div>
+<div ng-if="currentTab == '2' && !hideform" class=""  id="bottomSection" align=center>
+
+	<form class="form-group form-container"  >
+	<br>
+	  <h3 ng-show="edit">{{editFormHeader}}:</h3>
+	  <div class="form-group">
+		<label>Application</label>
+		<!-- <input class="w3-input w3-border" type="text" ng-model="config.application"> -->
+		<select class="form-control" style="width:200px;" ng-model="config.appName" ng-change="getModulesOfSelectedApp(config.appName)" >
+		<option ng-repeat="apps in allConfigs track by apps.id">{{apps.name}}</option>
+		<!-- <select class="form-control" style="width:300px;" ng-options="apps as apps.name for apps in allConfigs track by apps.id" ng-model="config.appName" > -->
+		</select> 
+		</div>
+		<br> 
+	   <div class="form-group">
+		<label>Module</label> <input class="form-control" style="width:200px;" type="text" ng-model="config.modName">
+		</div>
+		
+		
+	  <!-- <br> -->
+	   <!-- <div class="form-group"> -->
+		<!-- <label>Topic URL</label> -->
+		
+		<!-- <input class="form-control" style="width:300px;" type="text" ng-model="config.topicUrl"> -->
+		<!-- </div> -->
+
+	  <br>
+	  <a class="btn btn-primary btn-xl js-scroll-trigger" ng-click="saveOrUpdateModule()" href="">&nbsp;&nbsp;&#10004; {{buttonName}}&nbsp;&nbsp;</a>
+	  <a class="btn btn-primary btn-xl js-scroll-trigger" ng-click="resetForm()" href="">&nbsp;&nbsp;Cancel&nbsp;&nbsp;</a>
+	  <!-- <button class="btn btn-primary"  ng-click=")" >&#10004; {{buttonName}}</button> -->
+	</form>
+</div>
+<!-- Modal ng-if="dispTheDelErrorModal" -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="modalCenterTitle" aria-hidden="true" >
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalLongTitle">Error while deleting the data</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+       {{delError}}
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+

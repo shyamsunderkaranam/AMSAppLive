@@ -1,0 +1,47 @@
+[
+		{
+			"name": "Application_1",
+			"modules": [
+				{
+					"name": "Module_1",
+					"topics": [
+						{
+							"name": "Topic_1",
+							"url": "/topic_1",
+							"roles": [
+								{
+									"name": "Role_1"
+								}
+							]
+						},
+						{
+							"name": "Topic_3",
+							"url": "/topic_3",
+							"roles": [
+								{
+									"name": "Role_3"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Module_2",
+					"topics": [
+						{
+							"name": "Topic_2",
+							"url": "/topic_2",
+							"roles": [
+								{
+									"name": "Role_1"
+								},
+								{
+									"name": "Role_2"
+								}
+							]
+						}
+					]
+				}
+			]
+		}
+	]
